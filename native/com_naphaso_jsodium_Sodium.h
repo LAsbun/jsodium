@@ -889,6 +889,24 @@ JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_randombytes_1close
 JNIEXPORT void JNICALL Java_com_naphaso_jsodium_Sodium_randombytes
   (JNIEnv *, jclass, jbyteArray);
 
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    int_test
+ * Signature: ()V
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_int_1test(JNIEnv *env, jclass clazz);
+
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_generichash_blake2b_salt_personal
+ * Signature: ([B[I[B[I[B[I[B[I[B[B[I)I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1blake2b_1salt_1personal(JNIEnv *env, jclass clazz
+, jbyteArray out, jint out_size, jbyteArray in , jint in_size , jbyteArray key , jint key_size , jbyteArray salt, jbyteArray personal,
+jint person_len);
+
+
 #ifdef __cplusplus
 }
 #endif

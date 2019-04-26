@@ -1218,15 +1218,6 @@ JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1blak
 }
 
 
-/*
- * Class:     com_naphaso_jsodium_Sodium
- * Method:    crypto_generichash_blake2b_salt_personal
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1blake2b_1salt_1personal(JNIEnv *env, jclass clazz) {
-  return 0;
-}
-
 
 /*
  * Class:     com_naphaso_jsodium_Sodium
@@ -2340,6 +2331,14 @@ JNIEXPORT void JNICALL Java_com_naphaso_jsodium_Sodium_randombytes_1stir(JNIEnv 
   randombytes_stir();
 }
 
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    int_test
+ * Signature: ()V
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_int_1test(JNIEnv *env, jclass clazz) {
+  return 1;
+}
 
 /*
  * Class:     com_naphaso_jsodium_Sodium
@@ -2468,6 +2467,55 @@ JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_sodium_1runtime_1has_1pcl
  */
 JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_sodium_1runtime_1has_1aesni(JNIEnv *env, jclass clazz) {
   return 0;
+}
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_generichash_blake2b_salt_personal
+ * Signature: ()V
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1blake2b_1salt_1personal(JNIEnv *env, jclass clazz
+, jbyteArray out, jint out_size, jbyteArray in , jint in_size , jbyteArray key , jint key_size , jbyteArray salt, jbyteArray personal,
+jint person_size){
+
+  unsigned char *out_bytes = GET_BYTES(out);
+
+  unsigned char *in_bytes = GET_BYTES(in);
+
+  if(in_size == 0){
+      RELEASE_BYTES(in, in_bytes);
+      in_bytes = NULL;
+  }
+
+
+
+  unsigned char *key_bytes = GET_BYTES(key);
+
+  printf("key_bytes: %02x", key_bytes[0]);
+
+  unsigned char *salt_bytes = GET_BYTES(salt);
+
+  printf("salt_bytes: %02x", salt_bytes[0]);
+
+  unsigned char *personal_bytes = GET_BYTES(personal);
+
+  if(person_size == 0){
+    RELEASE_BYTES(personal, personal_bytes);
+    personal_bytes = NULL;
+  }
+
+  int result = crypto_generichash_blake2b_salt_personal(out_bytes, out_size, in_bytes, in_size, key_bytes, key_size, salt_bytes, personal_bytes);
+
+   RELEASE_BYTES(out, out_bytes);
+   RELEASE_BYTES(in, in_bytes);
+   RELEASE_BYTES(key, key_bytes);
+   RELEASE_BYTES(salt, salt_bytes);
+   RELEASE_BYTES(personal, personal_bytes);
+
+   printf("out_bytes: %02x", out_bytes[0]);
+
+    return result;
+
 }
 
 
