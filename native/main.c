@@ -2491,11 +2491,11 @@ jint person_size){
 
   unsigned char *key_bytes = GET_BYTES(key);
 
-  printf("key_bytes: %02x", key_bytes[0]);
+//  printf("key_bytes: %02x", key_bytes[0]);
 
   unsigned char *salt_bytes = GET_BYTES(salt);
 
-  printf("salt_bytes: %02x", salt_bytes[0]);
+//  printf("salt_bytes: %02x", salt_bytes[0]);
 
   unsigned char *personal_bytes = GET_BYTES(personal);
 
@@ -2512,7 +2512,7 @@ jint person_size){
    RELEASE_BYTES(salt, salt_bytes);
    RELEASE_BYTES(personal, personal_bytes);
 
-   printf("out_bytes: %02x", out_bytes[0]);
+//   printf("out_bytes: %02x", out_bytes[0]);
 
     return result;
 
