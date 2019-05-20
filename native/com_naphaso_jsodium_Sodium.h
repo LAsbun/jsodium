@@ -323,22 +323,6 @@ JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1aead_1chacha20pol
 
 /*
  * Class:     com_naphaso_jsodium_Sodium
- * Method:    crypto_aead_chacha20poly1305_encrypt
- * Signature: ([B[B[B[B[B)I
- */
-JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1aead_1chacha20poly1305_1encrypt
-  (JNIEnv *, jclass, jbyteArray, jbyteArray, jbyteArray, jbyteArray, jbyteArray);
-
-/*
- * Class:     com_naphaso_jsodium_Sodium
- * Method:    crypto_aead_chacha20poly1305_decrypt
- * Signature: ([B[B[B[B[B)I
- */
-JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1aead_1chacha20poly1305_1decrypt
-  (JNIEnv *, jclass, jbyteArray, jbyteArray, jbyteArray, jbyteArray, jbyteArray);
-
-/*
- * Class:     com_naphaso_jsodium_Sodium
  * Method:    crypto_auth_hmacsha512256
  * Signature: ([B[B[B)I
  */
@@ -905,6 +889,75 @@ JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_int_1test(JNIEnv *env, jc
 JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1blake2b_1salt_1personal(JNIEnv *env, jclass clazz
 , jbyteArray out, jint out_size, jbyteArray in , jint in_size , jbyteArray key , jint key_size , jbyteArray salt, jbyteArray personal,
 jint person_len);
+
+
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_scalarmult
+ * Signature: ([B[B[B)I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1scalarmult(JNIEnv *env, jclass clazz,
+ jbyteArray q, jbyteArray n, jbyteArray p);
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_generichash_statebytes
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1statebytes(JNIEnv *env, jclass clazz);
+
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_generichash
+ * Signature: ([B[I[B[I[B[I)I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_generichash(JNIEnv *env, jclass clazz,
+ jbyteArray out, jint out_size, jbyteArray in, jint in_size, jbyteArray key, jint key_size);
+
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_generichash_init
+ * Signature: ([B[B[I[I)I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1init(JNIEnv *env, jclass clazz,
+ jbyteArray state, jbyteArray key, jint key_size, jint out_size);
+
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_generichash_update
+ * Signature: ([B[B[I)I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1update(JNIEnv *env, jclass clazz,
+ jbyteArray state, jbyteArray in, jint in_size);
+
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_generichash_final
+ * Signature: ([B[B[I)I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1final(JNIEnv *env, jclass clazz,
+ jbyteArray state, jbyteArray out, jint out_size);
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_aead_chacha20poly1305_encrypt
+ * Signature: ([B[B[B[B[B)I
+ */
+// JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1aead_1chacha20poly1305_1encrypt
+//  (JNIEnv *, jclass, jbyteArray c, jlongArray clen, jbyteArray m, jlong mlen, jbyteArray ad, jlong adlen, jbyteArray nSec, jbyteArray nPub, jbyteArray k);
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_aead_chacha20poly1305_decrypt
+ * Signature: ([B[B[B[B[B)I
+ */
+//JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1aead_1chacha20poly1305_1decrypt
+//  (JNIEnv *, jclass, jbyteArray m, jlongArray mlen, jbyteArray nSec, jbyteArray c, jlong clen, jbyteArray ad, jlong adlen, jbyteArray nPub, jbyteArray k);
 
 
 #ifdef __cplusplus

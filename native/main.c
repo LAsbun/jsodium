@@ -1268,36 +1268,6 @@ JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash(JNIEn
   return 0;
 }
 
-
-/*
- * Class:     com_naphaso_jsodium_Sodium
- * Method:    crypto_generichash_init
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1init(JNIEnv *env, jclass clazz) {
-  return 0;
-}
-
-
-/*
- * Class:     com_naphaso_jsodium_Sodium
- * Method:    crypto_generichash_update
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1update(JNIEnv *env, jclass clazz) {
-  return 0;
-}
-
-
-/*
- * Class:     com_naphaso_jsodium_Sodium
- * Method:    crypto_generichash_final
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1generichash_1final(JNIEnv *env, jclass clazz) {
-  return 0;
-}
-
 /*
  * Class:     com_naphaso_jsodium_Sodium
  * Method:    crypto_hash_sha256
@@ -1702,16 +1672,6 @@ JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1scalarmult_1curve
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1scalarmult_1base(JNIEnv *env, jclass clazz) {
-  return 0;
-}
-
-
-/*
- * Class:     com_naphaso_jsodium_Sodium
- * Method:    crypto_scalarmult
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1scalarmult(JNIEnv *env, jclass clazz) {
   return 0;
 }
 
@@ -2516,6 +2476,27 @@ jint person_size){
 
     return result;
 
+}
+
+/*
+ * Class:     com_naphaso_jsodium_Sodium
+ * Method:    crypto_scalarmult
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_naphaso_jsodium_Sodium_crypto_1scalarmult(JNIEnv *env, jclass clazz,
+ jbyteArray q, jbyteArray n, jbyteArray p) {
+
+  unsigned char *q_bytes = GET_BYTES(q);
+
+  unsigned char *n_bytes = GET_BYTES(n);
+  unsigned char *p_bytes = GET_BYTES(p);
+
+  int result = crypto_scalarmult(q_bytes, n_bytes, p_bytes);
+
+  RELEASE_BYTES(q, q_bytes);
+  RELEASE_BYTES(n, n_bytes);
+  RELEASE_BYTES(p, p_bytes);
+  return result;
 }
 
 

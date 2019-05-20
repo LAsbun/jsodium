@@ -516,9 +516,7 @@ public final class Sodium {
     return crypto_scalarmult_curve25519_base(q, n);
   }
 
-  public static int crypto_scalarmult(byte[] q, byte[] n, byte[] p) {
-    return crypto_scalarmult_curve25519(q, n, p);
-  }
+  public static native int crypto_scalarmult(byte[] q, byte[] n, byte[] p);
 
   //#include "sodium/crypto_secretbox_xsalsa20poly1305.h"
 
